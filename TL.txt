@@ -1,0 +1,25 @@
+import define as define
+from selenium import webdriver
+import time
+from selenium.webdriver.common.keys import Keys
+
+
+driver = webdriver.Chrome(r"C:\Users\Adi\PycharmProjects\SeleniumwithPython\drivers\chromedriver.exe")
+# driver = webdriver.ie(r"..\drivers\MicrosoftWebDriver.exe")
+driver.set_page_load_timeout("10")
+driver.get("https://twitter.com/")
+# driver.find_element_by_link_text("Log in").click()
+
+username=driver.find_element_by_name('session[username_or_email]')
+username.clear()
+username.send_keys("shekhawat_adi14")
+password=driver.find_element_by_name('session[password]')
+password.clear()
+password.send_keys('qwertypasd')
+# logInButton=driver.find_element_by_xpath('//*[@id="doc"]/div/div[1]/div[1]/div[2]/div[1]/a')
+logInButton=driver.find_element_by_xpath('/html/body/div[1]/div/div[1]/div[1]/div[1]/form/input[1]')
+logInButton.click()
+trend=driver.find_element_by_class_name('module Trends trends"')
+trend.print()
+time.sleep(10)
+driver.quit()
